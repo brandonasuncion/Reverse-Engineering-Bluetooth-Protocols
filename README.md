@@ -60,7 +60,7 @@ Surprisingly, it worked out just fine. Though, I'd imagine I would need to updat
 * radar.py - rough proof of concept to interface with radar detector
 
 ## Contact
-Brandon Asuncion - brandon@suncion.tech 
+Brandon Asuncion - me@brandonasuncion.tech
 
 If you have any feedback, please let me know!
 
