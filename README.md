@@ -13,7 +13,7 @@ Playing around with my old jailbroken iPhone 5, I was able to use BTserver to lo
 
 Using the packet filter `bluetooth.src == B8:92:1D:00:3F:61`, I could see the raw packets the iOS app was sending to the radar detector. I took a few sample recordings of the communication between my phone and the radar detector, some with alerts being generated, and some without.
 
-### Analyzing the Protocol
+## Analyzing the Protocol
 The bluetooth data is transfered over the RFCOMM protocol. When the devices first connect, they send some information back and forth, probably just syncing settings (more on this later). Afterwards, the two devices follow a predictable pattern between one another. The radar detector will sends an RFCOMM packet through Bluetooth at regular 1/2 second intervals. With some time and patience, I was able to decipher the payload structure sent from the radar detector to the iPhone.
 
 **Payload Structure:** Radar Detector → iPhone
@@ -39,7 +39,7 @@ The SEQ number is where things start to get interesting. If you took a class on 
 
 The `Alert` byte specifies if an alert is being triggered. If so, it is set of value `0x41`, and the following byte is used to specify the type of alert is being sent. I couldn't find out too much about the values since I don't own an actual radar gun. Though, a guy on Instructables made a [LIDAR gun simulator](http://www.instructables.com/id/Test-your-radar-detector-or-laser-jammer-with-this/) using an Arduino. That helped a lot in analyzing the packets.
 
-### Simulating a Response
+## Simulating a Response
 In order to the iOS app to maintain the connection to the device, it needs to send a response in the correct format. Thankfully, the response to the radar detector is a lot more simple, and is only 9 bytes.
 
 **Response:** iPhone → Radar Detector
