@@ -1,4 +1,13 @@
+'''
+	Extremely rough proof-of-concept for interfacing with the iRAD 900 via Bluetooth
+	Brandon Asuncion <me@brandonasuncion.tech>
 
+	DEPENDENCIES
+	- If on a Raspberry Pi:
+		$ sudo apt-get install pi-bluetooth
+	- For everyone:
+		$ sudo apt-get install bluetooth bluez python-bluez
+'''
 
 import time
 from bluetooth import *
@@ -66,10 +75,10 @@ def sendResponse(data):
 			return True
 	return False
 
-# since you can't really modify a string character directly...
 def replaceChar(data, index, char):
 	return data[:index] + char + data[index + 1:]
 
+# See: https://github.com/brandonasuncion/Reverse-Engineering-Bluetooth-Protocols#forming-a-response
 CUSTOM_RESPONSE = "5506000200ff0042ff".decode("hex")
 	
 counter = 0xAE

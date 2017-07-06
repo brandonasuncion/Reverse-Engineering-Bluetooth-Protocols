@@ -1,3 +1,10 @@
+'''
+	Takes an XML packet log exported from WireShark, parses it, then saves it
+	into a serialized format within packetData.dat
+
+	Brandon Asuncion <me@brandonasuncion.tech>
+'''
+
 import xml.etree.ElementTree as ET
 import binascii
 import pickle
@@ -42,25 +49,12 @@ class PacketParser:
 					print("CANNOT FIND REST OF DATA")
 					continue
 					
-			#self.packets[num] = {'num': num, 'data': data, 'raw': raw, 'size': size, 'direction': sent}	# dictionary
-			self.packets.append({'num': num, 'data': data, 'raw': raw, 'size': size, 'direction': sent})	# list
-			#print("{}\t{} ({}):\t{}".format(num, "SENT" if sent else "RECV", size, data))
+			
+			self.packets.append({'num': num, 'data': data, 'raw': raw, 'size': size, 'direction': sent})
 		
 			
 	def getResponse(self, received, direction = False):
-		"""
-		# dictionary
-		found = False
-		for num, packet in self.packets.items():
-			if found:
-				print("{}: {}".format(packet['num'], packet['data']))
-				return packet['data']
-			if packet['raw'] == received:
-				found = True
-			print(num)
-		"""
-		
-		# using lists
+
 		for i, packet in enumerate(self.packets):			
 			if received == packet['raw']:
 				j = i + 1
@@ -70,33 +64,17 @@ class PacketParser:
 					j = j + 1
 
 	def generateSerializedFile(self, filename):
-		"""
-		fileData = {}
-		
-		for i, packet in enumerate(self.packets):			
-			if not packet['direction']:
-				j = i + 1
-				while j < len(self.packets):
-					if self.packets[j]['direction']:
-						fileData[packet['raw']] = self.packets[j]['raw']
-						break
-					j = j + 1
-		
-		with open(filename, 'wb') as fh:
-			pickle.dump(fileData, fh, protocol=2)
-		"""
 		with open(filename, 'wb') as fh:
 			pickle.dump(self.packets, fh, protocol=2)
 		
 		
 def main():
 	parser = PacketParser('data.xml')
-	
-	#response = parser.getResponse(binascii.a2b_hex('550400380000c4'))
-	#print(response)
+
+	# To test:
+	# print(parser.getResponse(binascii.a2b_hex('550400380000c4')))
 	
 	parser.generateSerializedFile('packetData.dat')
-	
 	
 if __name__ == "__main__":
 	main()
