@@ -84,7 +84,7 @@ Any comments/feedback is appreciated!
 * [PyBluez](https://github.com/karulis/pybluez/) - Bluetooth Python library
 * [PyBluez RFCOMM example](https://github.com/karulis/pybluez/blob/master/examples/simple/rfcomm-client.py) - example using PyBluez to communicate over Bluetooth
 * [Bluetooth RFCOMM Reverse Engineering](http://travisgoodspeed.blogspot.com/2011/12/introduction-to-bluetooth-rfcomm.html) - Blog post by Travis Goodspeed
-* [BTServer](https://www.theiphonewiki.com/wiki/Bluetooth) - iOS Bluetooth stack daemon
+* [BTServer](https://www.theiphonewiki.com/wiki/Bluetooth#BTServer) - iOS Bluetooth stack daemon / How to Enable Bluetooth Logging
 
 ## License
 * [MIT License](https://choosealicense.com/licenses/mit/)
