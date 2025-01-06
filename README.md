@@ -76,7 +76,7 @@ Looking back, it was a really fun project doing something that I never really ha
 * radar.py - rough proof of concept to interface with radar detector
 
 ## Contact
-Brandon Asuncion // <me@brandonasuncion.tech>
+Brandon Asuncion // <me@brandonasuncion.dev>
 
 Any comments/feedback is appreciated!
 
